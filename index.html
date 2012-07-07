@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+{% if ua_check %}<meta name="viewport" content="width=580px;target-densitydpi=high-dpi" />{% endif %}
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>武蔵小山検定 2012初級</title>
+<link href="/style.css" media="screen" rel="stylesheet" type="text/css" />
+{% if ua_check %}<link href="/sp.css" media="screen" rel="stylesheet" type="text/css" />{% endif %}
+</head>
+<body>
+<div id="header">
+	<h1><span>武蔵小山検定 2012初級</span></h1>
+</div>
+<div id="container">
+	<div class="home">
+		<p>武蔵小山に住んでいる、もしくは武蔵小山にゆかりのある、そして武蔵小山を愛しているメンバーで構成された「むさこアプリプロジェクト」が制作した検定アプリです。3択に答えていくだけで合否が判定します。</p>
+		<p><strong>検定を始めるには、このアプリへのログインが必要です。</strong></p>
+		<fb:login-button autologoutlink="false" scope="publish_stream">このアプリにログインする</fb:login-button>
+	</div>
+</div>
+<div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {
+	FB.init({appId: '{{ facebook_app_id }}', status: true, cookie: true, xfbml: true, oauth: true});
+	FB.Event.subscribe('auth.login', function(response) {
+		window.location.href = '/first';
+	});
+	FB.Canvas.setAutoGrow();
+};
+(function() {
+	var e = document.createElement('script');
+	e.type = 'text/javascript';
+	e.src = document.location.protocol + '//connect.facebook.net/ja_JP/all.js';
+	e.async = true;
+	document.getElementById('fb-root').appendChild(e);
+}());
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+{% if ua_check %}<meta name="viewport" content="width=580px;target-densitydpi=high-dpi" />{% endif %}
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>武蔵小山検定 2012初級</title>
+<link href="/style.css" media="screen" rel="stylesheet" type="text/css" />
+{% if ua_check %}<link href="/sp.css" media="screen" rel="stylesheet" type="text/css" />{% endif %}
+<script type="text/javascript" src="/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var num = Math.floor(Math.random() * 4);
+		if (num == 1 || num == 2) {
+			$('h2').attr('class', 'part2');
+		}
+		$('#cm'+num).fadeIn(1000);
+		$('.navi img').click(function() {
+			document.f.submit();
+		});
+	});
+</script>
+</head>
+<body>
+<div id="header">
+	<h1><span>武蔵小山検定 2012初級</span></h1>
+</div>
+<div id="container">
+	<div class="break">
+		<h2 class="part1"><span>5問終了ですよー。ここでちょっとリフレッシュして、残り2問、頑張りましょう！</span></h2>
+		<form name="f" method="post" action="/second">
+			<input type="hidden" name="check" value="1" />
+			<input type="hidden" name="q1" value="{{ answers.q1 }}" />
+			<input type="hidden" name="q2" value="{{ answers.q2 }}" />
+			<input type="hidden" name="q3" value="{{ answers.q3 }}" />
+			<input type="hidden" name="q4" value="{{ answers.q4 }}" />
+			<input type="hidden" name="q5" value="{{ answers.q5 }}" />
+			<div class="navi"><img src="/btn_nexthalf.png" alt="検定を続ける" /></div>
+		</form>
+		<div class="cm" id="cm0" style="display: none;">
+			<div class="photo"><img src="/break_santidur.jpg" alt="" /></div>
+			<p>ところで、仕事や家事で疲れたとき、武蔵小山で癒されませんか？「癒しやエステをもっと身近に」という想いを込め、何度でも通いやすい価格設定と高い技術にこだわったバリニーズリラクゼーション&エステサロン「<strong>サンティドゥール</strong>」があります。武蔵小山駅徒歩30秒、昭和レトロの一軒家を改装した、隠れ家のような雰囲気の中、バリ風の空間で心と体を癒すひとときを、ぜひともお過ごしください。<br /><br />&raquo; <a href="http://www.san-tidur.com/" target="_blank">サンティドゥール</a></p>
+		</div>
+		<div class="cm" id="cm1" style="display: none;">
+			<div class="photo"><img src="/break_amameria.jpg" alt="" /></div>
+			<p>ところで、仕事や家事で疲れたとき、おいしいコーヒーとすてきな空間を提供している「<strong>アマメリアエスプレッソ</strong>」で、ひと息いれませんか？　アマメリアのコーヒー豆は、アメリカスペシャルティコーヒー協会認定のコーヒー審査員が、各国のスペシャルティコーヒーの中からさらに選りすぐった、世界のコーヒー流通量のなかでも5%に満たないトップクラスのコーヒー豆を使用しています。そして、アマメリア独自の改良を様々施した焙煎機によって、それぞれの豆が本来持っている自然なフレーバーを最大限に引き出します。おいしい日本茶や紅茶のように、ストレートでも自然な甘味・旨味を感じながら飲んでいただけるように心掛けて毎朝焙煎しています。<br /><br />&raquo; <a href="http://www.amameria.com/" target="_blank">アマメリアエスプレッソ</a></p>
+		</div>
+		<div class="cm" id="cm2" style="display: none;">
+			<div class="photo"><img src="/break_symmetry.jpg" alt="" /></div>
+			<p>ところで、女性にとって、美は永遠のテーマですよね。武蔵小山の美容サロン「<strong>シンメトリー</strong>」の施術メニュー、「小顔矯正」「パーフェクトボディ」はお客様のお顔、お体を本来の状態に戻す事で、お客様本来の健康的で美しいスタイルを取り戻していただく施術です。どちらも即効性があるうえに持続性が高いのが特徴で、一度の効果でも効果を実感していただけます。皆様のお越しを心よりお待ちしております。<br /><br />&raquo; <a href="http://www.symmetry-musako.jp/" target="_blank">シンメトリー</a></p>
+		</div>
+		<div class="cm" id="cm3" style="display: none;">
+			<div class="photo"><img src="/break_kaen.jpg" alt="" /></div>
+			<p>ところで、お仕事で疲れたりストレスを感じたとき、おいしいものを食べるとリフレッシュしますよね。「<strong>四季酒菜 かえん 武蔵小山</strong>」は、毎日鳥取から届く大山匠鶏の串焼きを中心に、旬の野菜もお魚も旨いものなら何でもありの串焼き居酒屋です。どこよりも旨いと噂のレバーとササミは当店の一押し。魚もめっちゃ凄いの仕入れてます。<br /><br />&raquo; <a href="http://tabelog.com/tokyo/A1317/A131710/13132650/" target="_blank">四季酒菜 かえん 武蔵小山</a></p>
+		</div>
+	</div>
+</div>
+<div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {
+	FB.init({appId: '{{ facebook_app_id }}', status: true, cookie: true, xfbml: true});
+	FB.Canvas.setAutoGrow();
+};
+(function() {
+	var e = document.createElement('script');
+	e.type = 'text/javascript';
+	e.src = document.location.protocol + '//connect.facebook.net/ja_JP/all.js';
+	e.async = true;
+	document.getElementById('fb-root').appendChild(e);
+}());
+</script>
+</body>
+</html>

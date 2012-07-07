@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+{% if ua_check %}<meta name="viewport" content="width=580px;target-densitydpi=high-dpi" />{% endif %}
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>武蔵小山検定 2012初級</title>
+<link href="/style.css" media="screen" rel="stylesheet" type="text/css" />
+{% if ua_check %}<link href="/sp.css" media="screen" rel="stylesheet" type="text/css" />{% endif %}
+<script type="text/javascript" src="/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var current_q = 6;
+		var next_q = 7;
+		$('#q6').fadeIn();
+		$('input:radio').change(function() {
+			$(this).parents('.answers').children('ul').fadeOut();
+			$(this).parents('.answers').children('.hideNote').addClass('a'+$(this).val());
+			$(this).parents('.answers').children('.hideNote').fadeIn('normal', function() {
+				$(this).parents('.qaBox').children('.navi').show();
+			});
+		});
+		$('.navi img').click(function() {
+			if (current_q == 7) {
+				document.f.submit();
+			}
+			$('#q'+current_q).hide();
+			$('#q'+next_q).fadeIn();
+			current_q++;
+			next_q++;
+		});
+	});
+</script>
+</head>
+<body>
+<div id="header">
+	<h1><span>武蔵小山検定 2012初級</span></h1>
+</div>
+<div id="container">
+	<div class="second">
+		<h2><span>残るはあと2問。はたして結果は……？</span></h2>
+		<form name="f" method="post" action="/result">
+			<input type="hidden" name="check" value="1" />
+			<input type="hidden" name="q1" value="{{ answers.q1 }}" />
+			<input type="hidden" name="q2" value="{{ answers.q2 }}" />
+			<input type="hidden" name="q3" value="{{ answers.q3 }}" />
+			<input type="hidden" name="q4" value="{{ answers.q4 }}" />
+			<input type="hidden" name="q5" value="{{ answers.q5 }}" />
+			<div class="qaBox" id="q6" style="display: none;">
+				<div class="qNum"><img src="/q6.png" alt="Q6" /></div>
+				<div class="question">
+					<p>武蔵小山の企業が発行しているタウン誌（フリーペーパー）の名前は？</p>
+				</div>
+				<div class="answers">
+					<ul>
+						<li><input type="radio" name="q6" value="1" /> まるまるっと</li>
+						<li><input type="radio" name="q6" value="2" /> ムサコタイムズ</li>
+						<li><input type="radio" name="q6" value="3" /> 635jp</li>
+					</ul>
+					<div class="hideNote" style="display: none;">
+						<p>正解は、<strong>まるまるっと</strong></p>
+						<p>エムテーワーク株式会社が発行しています。ちなみに、<a href="https://twitter.com/#!/635jp" target="_blank">635jp</a>はムサコ会のTwitterアカウントです。</p>
+					</div>
+				</div>
+				<div class="navi" id="nextQ" style="display: none;"><img src="/btn_nextq.png" alt="次のQへ" /></div>
+			</div>
+			<div class="qaBox" id="q7" style="display: none;">
+				<div class="qNum"><img src="/q7.png" alt="Q7" /></div>
+				<div class="question">
+					<p>東京でむさこ（ムサコ）と言えばどこ？</p>
+				</div>
+				<div class="answers">
+					<ul>
+						<li><input type="radio" name="q7" value="1" /> 武蔵小山</li>
+						<li><input type="radio" name="q7" value="2" /> 武蔵小杉</li>
+						<li><input type="radio" name="q7" value="3" /> 武蔵小金井</li>
+					</ul>
+					<div class="hideNote" style="display: none;">
+						<p>正解は、<strong>武蔵小山</strong></p>
+						<p>むさこアプリプロジェクトは、渋谷からタクシーに乗車する際、運転手さんに「むさこ（ムサコ）まで」と伝えて違うむさこ（ムサコ）に連れて行かれる被害を撲滅する運動を応援しています（すみません、ウソです！）。</p>
+					</div>
+				</div>
+				<div class="navi" id="goResult" style="display: none;"><img src="/btn_goresult.png" alt="検定結果へ" /></div>
+			</div>
+		</form>
+	</div>
+</div>
+<div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {
+	FB.init({appId: '{{ facebook_app_id }}', status: true, cookie: true, xfbml: true});
+	FB.Canvas.setAutoGrow();
+};
+(function() {
+	var e = document.createElement('script');
+	e.type = 'text/javascript';
+	e.src = document.location.protocol + '//connect.facebook.net/ja_JP/all.js';
+	e.async = true;
+	document.getElementById('fb-root').appendChild(e);
+}());
+</script>
+</body>
+</html>
