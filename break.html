@@ -11,7 +11,11 @@
 <script type="text/javascript" src="/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+{% if id %}
+		var num = {{ id }};
+{% else %}
 		var num = Math.floor(Math.random() * 4);
+{% endif %}
 		if (num == 1 || num == 2) {
 			$('h2').attr('class', 'part2');
 		}
@@ -20,6 +24,16 @@
 			document.f.submit();
 		});
 	});
+</script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-12551696-14']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
 </script>
 </head>
 <body>
@@ -40,19 +54,19 @@
 		</form>
 		<div class="cm" id="cm0" style="display: none;">
 			<div class="photo"><img src="/break_santidur.jpg" alt="" /></div>
-			<p>ところで、仕事や家事で疲れたとき、武蔵小山で癒されませんか？「癒しやエステをもっと身近に」という想いを込め、何度でも通いやすい価格設定と高い技術にこだわったバリニーズリラクゼーション&エステサロン「<strong>サンティドゥール</strong>」があります。武蔵小山駅徒歩30秒、昭和レトロの一軒家を改装した、隠れ家のような雰囲気の中、バリ風の空間で心と体を癒すひとときを、ぜひともお過ごしください。<br /><br />&raquo; <a href="http://www.san-tidur.com/" target="_blank">サンティドゥール</a></p>
+			<p>ところで、仕事や家事で疲れたとき、武蔵小山で癒されませんか？<br />何度でも通いやすい価格設定のバリ式アロママッサージ&amp;エステサロン「<strong>サンティドゥール</strong>」が、武蔵小山駅東口徒歩30秒のところにあります。昭和レトロの一軒家を改装した、アットホームなバリ風空間で心も体も癒される贅沢なリラクゼーションタイムをお過ごしください。<br />そうそう、訪れる際は「武蔵小山検定を見ました」と言っていただけると会話も弾むと思います。<br /><br />&raquo; <a href="http://www.san-tidur.com/" target="_blank">サンティドゥール</a></p>
 		</div>
 		<div class="cm" id="cm1" style="display: none;">
 			<div class="photo"><img src="/break_amameria.jpg" alt="" /></div>
-			<p>ところで、仕事や家事で疲れたとき、おいしいコーヒーとすてきな空間を提供している「<strong>アマメリアエスプレッソ</strong>」で、ひと息いれませんか？　アマメリアのコーヒー豆は、アメリカスペシャルティコーヒー協会認定のコーヒー審査員が、各国のスペシャルティコーヒーの中からさらに選りすぐった、世界のコーヒー流通量のなかでも5%に満たないトップクラスのコーヒー豆を使用しています。そして、アマメリア独自の改良を様々施した焙煎機によって、それぞれの豆が本来持っている自然なフレーバーを最大限に引き出します。おいしい日本茶や紅茶のように、ストレートでも自然な甘味・旨味を感じながら飲んでいただけるように心掛けて毎朝焙煎しています。<br /><br />&raquo; <a href="http://www.amameria.com/" target="_blank">アマメリアエスプレッソ</a></p>
+			<p>ところで、仕事や家事で疲れたとき、おいしいコーヒーとすてきな空間を提供している「<strong>アマメリアエスプレッソ</strong>」で、ひと息いれませんか？<br />アマメリアのコーヒー豆は、アメリカスペシャルティコーヒー協会認定のコーヒー審査員が、各国のスペシャルティコーヒーの中からさらに選りすぐった、世界のコーヒー流通量のなかでも5%に満たないトップクラスのコーヒー豆を使用しています。そして、アマメリア独自の改良を様々施した焙煎機によって、それぞれの豆が本来持っている自然なフレーバーを最大限に引き出します。おいしい日本茶や紅茶のように、ストレートでも自然な甘味・旨味を感じながら飲んでいただけるように心掛けて毎朝焙煎しています。<br />そうそう、訪れる際は「武蔵小山検定を見ました」と言っていただけると会話も弾むと思います。<br /><br />&raquo; <a href="http://www.amameria.com/" target="_blank">アマメリアエスプレッソ</a></p>
 		</div>
 		<div class="cm" id="cm2" style="display: none;">
 			<div class="photo"><img src="/break_symmetry.jpg" alt="" /></div>
-			<p>ところで、女性にとって、美は永遠のテーマですよね。武蔵小山の美容サロン「<strong>シンメトリー</strong>」の施術メニュー、「小顔矯正」「パーフェクトボディ」はお客様のお顔、お体を本来の状態に戻す事で、お客様本来の健康的で美しいスタイルを取り戻していただく施術です。どちらも即効性があるうえに持続性が高いのが特徴で、一度の効果でも効果を実感していただけます。皆様のお越しを心よりお待ちしております。<br /><br />&raquo; <a href="http://www.symmetry-musako.jp/" target="_blank">シンメトリー</a></p>
+			<p>ところで、女性にとって、美は永遠のテーマですよね。<br />武蔵小山の美容サロン「<strong>シンメトリー</strong>」の施術メニュー、「小顔矯正」「パーフェクトボディ」はお客様のお顔、お体を本来の状態に戻す事で、お客様本来の健康的で美しいスタイルを取り戻していただく施術です。どちらも即効性があるうえに持続性が高いのが特徴で、一度の効果でも効果を実感していただけます。<br />皆様のお越しを心よりお待ちしております。<br />そうそう、訪れる際は「武蔵小山検定を見ました」と言っていただけると会話も弾むと思います。<br /><br />&raquo; <a href="http://www.symmetry-musako.jp/" target="_blank">シンメトリー</a></p>
 		</div>
 		<div class="cm" id="cm3" style="display: none;">
 			<div class="photo"><img src="/break_kaen.jpg" alt="" /></div>
-			<p>ところで、お仕事で疲れたりストレスを感じたとき、おいしいものを食べるとリフレッシュしますよね。「<strong>四季酒菜 かえん 武蔵小山</strong>」は、毎日鳥取から届く大山匠鶏の串焼きを中心に、旬の野菜もお魚も旨いものなら何でもありの串焼き居酒屋です。どこよりも旨いと噂のレバーとササミは当店の一押し。魚もめっちゃ凄いの仕入れてます。<br /><br />&raquo; <a href="http://tabelog.com/tokyo/A1317/A131710/13132650/" target="_blank">四季酒菜 かえん 武蔵小山</a></p>
+			<p>ところで、お仕事で疲れたりストレスを感じたとき、おいしいものを食べるとリフレッシュしますよね。<br />「<strong>四季酒菜 かえん 武蔵小山</strong>」は、毎日鳥取から届く大山匠鶏の串焼きを中心に、旬の野菜もお魚も旨いものなら何でもありの串焼き居酒屋です。<br />どこよりも旨いと噂のレバーとササミは当店の一押し。魚もめっちゃ凄いの仕入れてます。<br />そうそう、訪れる際は「武蔵小山検定を見ました」と言っていただけると会話も弾むと思います。<br /><br />&raquo; <a href="http://tabelog.com/tokyo/A1317/A131710/13132650/" target="_blank">四季酒菜 かえん 武蔵小山</a></p>
 		</div>
 	</div>
 </div>

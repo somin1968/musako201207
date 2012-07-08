@@ -151,6 +151,7 @@ class BreakHandler( BaseHandler ) :
 					'q4': self.request.get( 'q4' ),
 					'q5': self.request.get( 'q5' ),
 				},
+				id = self.request.get( 'id' )
 			)
 			self.response.out.write( template.render( path, args ) )
 		else :
