@@ -170,7 +170,6 @@ a img {
 	width: 540px;
 }
 	.break h2 {
-		margin-bottom: 20px;
 		width: 540px;
 		height: 120px;
 	}
@@ -183,16 +182,10 @@ a img {
 		.break h2 span {
 			display: none;
 		}
-	.break .navi {
-		text-align: right;
-	}
-		.break .navi img:hover {
-			cursor: pointer;
-		}
 	.break .cm {
 		background-color: #fff;
 		border: 3px solid #ed7dad;
-		margin-top: 50px;
+		margin-top: 30px;
 		padding: 20px;
 	}
 		.break .cm .photo {
@@ -208,6 +201,13 @@ a img {
 				color: #ed7dad;
 				font-weight: bold;
 			}
+	.break .navi {
+		text-align: right;
+		margin-top: 20px;
+	}
+		.break .navi img:hover {
+			cursor: pointer;
+		}
 
 .second {
 }
@@ -290,16 +290,16 @@ a img {
 #q1 .answers .hideNote.a2 {
 	background-image: url("maru.png");
 }
-#q2 .answers .hideNote.a3 {
+#q2 .answers .hideNote.a1 {
 	background-image: url("maru.png");
 }
-#q3 .answers .hideNote.a2 {
+#q3 .answers .hideNote.a3 {
 	background-image: url("maru.png");
 }
-#q4 .answers .hideNote.a2 {
+#q4 .answers .hideNote.a3 {
 	background-image: url("maru.png");
 }
-#q5 .answers .hideNote.a3 {
+#q5 .answers .hideNote.a2 {
 	background-image: url("maru.png");
 }
 #q6 .answers .hideNote.a1 {

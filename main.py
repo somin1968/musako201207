@@ -24,7 +24,7 @@ directory so it can be imported.
 FACEBOOK_APP_ID = '340983539315516'
 FACEBOOK_APP_SECRET = '6dec856841aa54989effcb3b6c15645f'
 
-CORRECT_ANSWER = '2322311'
+CORRECT_ANSWER = ['2', '1', '3', '3', '2', '1', '1']
 
 import facebook
 import os.path
@@ -185,9 +185,23 @@ class SecondHandler( BaseHandler ) :
 class ResultHandler( BaseHandler ) :
 	def get( self ) :
 		if self.request.get( 'check' ) :
-			answer = self.request.get( 'q1' ) + self.request.get( 'q2' ) + self.request.get( 'q3' ) + self.request.get( 'q4' ) + self.request.get( 'q5' ) + self.request.get( 'q6' ) + self.request.get( 'q7' )
+			result = 0
+			if CORRECT_ANSWER[0] == self.request.get( 'q1' ) :
+				result += 1
+			if CORRECT_ANSWER[1] == self.request.get( 'q2' ) :
+				result += 1
+			if CORRECT_ANSWER[2] == self.request.get( 'q3' ) :
+				result += 1
+			if CORRECT_ANSWER[3] == self.request.get( 'q4' ) :
+				result += 1
+			if CORRECT_ANSWER[4] == self.request.get( 'q5' ) :
+				result += 1
+			if CORRECT_ANSWER[5] == self.request.get( 'q6' ) :
+				result += 1
+			if CORRECT_ANSWER[6] == self.request.get( 'q7' ) :
+				result += 1
 			passing_flg = False
-			if answer == CORRECT_ANSWER :
+			if result >= 5 :
 				passing_flg = True
 			user = self.current_user
 			if user :
@@ -197,11 +211,15 @@ class ResultHandler( BaseHandler ) :
 				response = _parse_json( content )
 				file.close()
 				if passing_flg :
-					message = "%s さんは「武蔵小山検定 2012初級」に見事合格されました。おめでとうございます。皆さんも試してみませんか？\nhttp://apps.facebook.com/musako_novice/" % ( response['name'].encode( 'utf-8' ) )	
+					message = "%s さんは「武蔵小山検定 2012初級」に見事合格されました。おめでとうございます。皆さんも試してみませんか？\nhttp://apps.facebook.com/musako_novice/" % ( response['name'].encode( 'utf-8' ) )
 					graph = facebook.GraphAPI( user.access_token )
 					image = open( 'passed_2012_novice.jpg' )
 					graph.put_photo( image, message )
 					image.close()
+				else :
+					message = "%s さんは「武蔵小山検定 2012初級」に挑戦しました。結果は7問中%s問正解で、惜しくも不合格でしたが、近いうちの再チャレンジをお待ちしております。お友達の皆様も、ひとつよろしくお願いします。\nhttp://apps.facebook.com/musako_novice/" % ( response['name'].encode( 'utf-8' ), result )
+					graph = facebook.GraphAPI( user.access_token )
+					graph.put_wall_post( message )
 			else :
 				response = { 'name': 'unknown' }
 			path = os.path.join( os.path.dirname( __file__ ), 'result.html' )
